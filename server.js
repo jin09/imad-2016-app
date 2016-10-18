@@ -104,10 +104,18 @@ function createTemplate(data){
             </div>         
             ${content}
         </div>
+        <hr/>
+        ADD A COMMENT 
+        <input type="text" id="name">
+        <input type="submit" id="submit" value="submit">
+        <hr/>
+        <h2>COMMENTS : </h2>
+        <ul id="list">
+            </ul>
+        
+        <script type="text/javascript" src="/ui/main.js">
     </body>
-    
-</html>
-`;
+    </html> `;
     return htmlTemplate;
 }
 
