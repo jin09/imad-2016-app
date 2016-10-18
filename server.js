@@ -142,6 +142,16 @@ app.get('/favicon.ico', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
+var names=[];
+
+app.get('/submit-name/:name', function (req, res) {
+    
+    var name = req.params.name;
+    names.push(name);
+    
+  res.send(JSON.stringify(names));
+});
+
 app.get('/:article_name', function (req, res) {
   // using the colon (:) will convert the requested string to a parameter
   var article_name = req.params.article_name;
