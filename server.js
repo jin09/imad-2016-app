@@ -124,20 +124,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/:article_name', function (req, res) {
-  // using the colon (:) will convert the requested string to a parameter
-  var article_name = req.params.article_name;
-  res.send(createTemplate(articles[article_name]));
-});
-/*
-app.get('/:article-two', function (req, res) {
-  res.send(createTemplate(articles.article_two));
-});
-
-app.get('/:article-three', function (req, res) {
-  res.send(createTemplate(articles.article_three));
-});
-*/
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
@@ -155,6 +141,22 @@ app.get('/ui/madi.png', function (req, res) {
 app.get('/favicon.ico', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
+
+app.get('/:article_name', function (req, res) {
+  // using the colon (:) will convert the requested string to a parameter
+  var article_name = req.params.article_name;
+  res.send(createTemplate(articles[article_name]));
+});
+/*
+app.get('/:article-two', function (req, res) {
+  res.send(createTemplate(articles.article_two));
+});
+
+app.get('/:article-three', function (req, res) {
+  res.send(createTemplate(articles.article_three));
+});
+*/
+
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
