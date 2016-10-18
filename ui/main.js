@@ -15,7 +15,7 @@ img.onclick = function(){
 };
 
 var button = document.getElementById("counter");
-button.onClick = function(){
+button.onclick = function(){
     // make request to the counter wndPoint
     
     //capture the response of the variable
