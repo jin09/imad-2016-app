@@ -34,6 +34,6 @@ button.onclick = function(){
     };
     
     //Make a request
-    httpRequest.open('GET', "http://jin09.imad.hasura-app.io/counter");
-    httpRequest.send();
+    request.open('GET', "http://jin09.imad.hasura-app.io/counter");
+    request.send();
 };
