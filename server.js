@@ -114,6 +114,7 @@ function createTemplate(data){
             </ul>
         
         <script type="text/javascript" src="/ui/main.js">
+        </scrpit>
     </body>
     </html> `;
     return htmlTemplate;
