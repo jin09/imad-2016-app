@@ -1,6 +1,5 @@
 console.log('Loaded!');
-var txt = document.getElementById("txt");
-txt.innerHTML = "TEXT HACKED!!!";
+
 
 var img = document.getElementById('madi');
 
