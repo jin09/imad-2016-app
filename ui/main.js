@@ -24,15 +24,16 @@ button.onclick = function(){
     request.onreadystatechange = function(){
         if (request.readyState === XMLHttpRequest.DONE) {
       if (request.status === 200) {
-        alert(request.responseText);
-      } else {
+        alert();
+        document.getElementById("count").innerHTML = request.responseText;
+      }
+      else {
         alert('There was a problem with the request.');
       }
     }
     };
     
-    //Render the variable to the correct span
-    counter++;
-    document.getElementById("count").innerHTML = counter.toString();
-    
+    //Make a request
+    httpRequest.open('GET', "http://jin09.imad.hasura-app.io/counter");
+    httpRequest.send();
 };
