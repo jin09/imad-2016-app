@@ -22,6 +22,6 @@ button.onClick = function(){
     
     //Render the variable to the correct span
     counter++;
-    getElementById("count").innerHTML = counter.toString();
+    document.getElementById("count").innerHTML = counter.toString();
     
 };
