@@ -46,11 +46,10 @@ var submit = document.getElementById("submit");
 if(submit !== null){
     submit.onclick = function(){
         
-            // make request to the counter wndPoint
+        // make request to the counter wndPoint
         var request = new XMLHttpRequest();
         
         //capture the response of the variable
-        
         request.onreadystatechange = function(){
             if (request.readyState === XMLHttpRequest.DONE) {
           if (request.status === 200) {
@@ -78,5 +77,45 @@ if(submit !== null){
         request.open('GET', url);
         request.send();
         
+    };
+    
+}
+
+var comments;
+
+var comment_submit = document.getElementById("comment_submit");
+if(comment_submit !== null){
+    comment_submit.onclick = function(){
+        
+        // make request to the counter wndPoint
+        var request = new XMLHttpRequest();
+        
+        //capture the response of the variable
+        request.onreadystatechange = function(){
+            if (request.readyState === XMLHttpRequest.DONE) {
+          if (request.status === 200) {
+            comments = request.responseText;
+            comments = JSON.parse(comments);
+            var list = "";
+            for(var i=0;i<comments.length;i++){
+                var comment = comments[i];
+                list += "<li>"+comment+"</li>";
+            }
+            
+            document.getElementById("comment_list").innerHTML = list;
+            
+          }
+          else {
+            alert('There was a problem with the request.');
+          }
+        }
+        };
+        
+        //Make a request
+        var url = "http://jin09.imad.hasura-app.io/submit-comment/";
+        var txt = document.getElementById("comment_text").value;
+        url = url + txt;
+        request.open('GET', url);
+        request.send();
     };
 }
