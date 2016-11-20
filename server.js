@@ -107,11 +107,11 @@ function createTemplate(data){
         </div>
         <hr/>
         ADD A COMMENT 
-        <input type="text" id="name">
-        <input type="submit" id="submit" value="submit">
+        <input type="text" id="comment_text">
+        <input type="submit" id="comment_submit" value="submit">
         <hr/>
         <h2>COMMENTS : </h2>
-        <ul id="list">
+        <ul id="comment_list">
             </ul>
         <script type="text/javascript" src="/ui/main.js">
         </script>
@@ -159,6 +159,14 @@ app.get('/submit-name/:name', function (req, res) {
     names.push(name);
     
   res.send(JSON.stringify(names));
+});
+
+var comments = [];
+app.get('/submit-comment/:comment', function (req, res) {
+    
+    var comment = req.params.comment;
+    comments.push(comment);
+  res.send(JSON.stringify(comments));
 });
 
 app.get('/:article_name', function (req, res) {
