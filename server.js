@@ -191,7 +191,7 @@ app.get('/articles/:article_name', function (req, res) {
   var articleData;
   pool.query("select * from article where title = "+ req.params.article_name, function(err, result){
       if(err){
-          res.send(500).send(err.toString());
+          res.status(500).send(err.toString());
       }else{
           if(result.rows.length === 0){
               res.status(404).send("Article not found");
