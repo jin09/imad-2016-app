@@ -189,7 +189,7 @@ app.get('/submit-comment/:comment', function (req, res) {
 app.get('/articles/:article_name', function (req, res) {
   // using the colon (:) will convert the requested string to a parameter
   var articleData;
-  pool.query("select * from article where title = "+ req.params.article_name, function(err, result){
+  pool.query("select * from article where title = '"+ req.params.article_name + "'", function(err, result){
       if(err){
           res.status(500).send(err.toString());
       }else{
