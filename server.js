@@ -186,10 +186,23 @@ app.get('/submit-comment/:comment', function (req, res) {
   res.send(JSON.stringify(comments));
 });
 
-app.get('/:article_name', function (req, res) {
+app.get('/articles/:article_name', function (req, res) {
   // using the colon (:) will convert the requested string to a parameter
-  var article_name = req.params.article_name;
-  res.send(createTemplate(articles[article_name]));
+  var articleData;
+  pool.query("select * from article where title = "+ req.params.article_name, function(err, result){
+      if(err){
+          res.send(500).send(err.toString());
+      }else{
+          if(result.rows.length === 0){
+              res.status(404).send("Article not found");
+          }
+          else{
+              var articleData = result.rows[0];
+              res.send(createTemplate(articleData));
+          }
+      }
+  });
+  
 });
 /*
 app.get('/:article-two', function (req, res) {
